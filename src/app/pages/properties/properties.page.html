@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar class="properties-toolbar">
+    <ion-title>Browse Properties</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="properties-content">
+  
+  <!-- Page header with title and count -->
+  <section class="page-header">
+    <div class="header-shell">
+      <h1>Available Properties</h1>
+      <p class="header-subtitle">
+        Explore our curated selection of properties across Dublin.
+        <span *ngIf="!loading"> {{ properties.length }} listings available.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="main-section">
+    <div class="main-shell">
+      
+      <!-- Loading spinner -->
+      <div *ngIf="loading" class="loading-state">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Loading properties...</p>
+      </div>
+
+      <!-- Properties grid - responsive (1 col mobile, 2 tablet, 3 desktop) -->
+      <ion-grid class="properties-grid" *ngIf="!loading && properties.length">
+        <ion-row>
+          
+          <ion-col
+            size="12"
+            size-md="6"
+            size-lg="4"
+            *ngFor="let property of properties">
+            
+            <!-- Property card -->
+            <ion-card
+              class="property-card"
+              button="true"
+              (click)="openProperty(property.id)">
+
+              <!-- Image with featured badge -->
+              <div class="card-image">
+                <img
+                  [src]="property.Images && property.Images[0] ? property.Images[0] : ''"
+                  [alt]="property.Title"
+                />
+                
+                <div class="featured-badge" *ngIf="property.Featured">
+                  Featured
+                </div>
+              </div>
+
+              <ion-card-content>
+                
+                <div class="price-badge">
+                  {{ formatPrice(property.Price) }}
+                </div>
+
+                <h3 class="card-title">
+                  {{ property.Title }}
+                </h3>
+
+                <p class="card-location">
+                  📍 {{ property.Location }}
+                </p>
+
+                <!-- Specs: beds, baths, area -->
+                <div class="card-specs">
+                  <span class="spec">
+                    <ion-icon name="bed-outline"></ion-icon>
+                    {{ property.Bedrooms }} bed
+                  </span>
+                  <span class="spec-divider">·</span>
+                  <span class="spec">
+                    <ion-icon name="water-outline"></ion-icon>
+                    {{ property.Bathrooms }} bath
+                  </span>
+                  <span class="spec-divider">·</span>
+                  <span class="spec">
+                    <ion-icon name="resize-outline"></ion-icon>
+                    {{ property.Area }} m²
+                  </span>
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Empty state when no properties -->
+      <div *ngIf="!loading && !properties.length" class="empty-state">
+        <ion-icon name="home-outline"></ion-icon>
+        <h2>No properties available</h2>
+        <p>Check back soon for new listings.</p>
+      </div>
+      
+    </div>
+  </section>
+  
+</ion-content>

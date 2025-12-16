@@ -1,0 +1,282 @@
+/* Page background */
+.contact-content {
+  --background: #f8fafc;
+}
+
+/* Main section */
+.contact-section {
+  padding: 4.5rem 0 4rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  min-height: 100%;
+}
+
+.section-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Page header */
+.section-header {
+  margin-bottom: 3rem;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h1 {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.header-description {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+/* Two column layout - info card (1fr) + form (1.5fr) */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Info card - left side */
+.info-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid #e0e7ff;
+  position: sticky;
+  top: 2rem;
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .info-text {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+  }
+}
+
+/* Benefits list with checkmarks */
+.info-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #475569;
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Form card - right side */
+.form-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 2px solid #e0e7ff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Ionic form items */
+.form-item {
+  --background: #ffffff;
+  --border-radius: 8px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  border: 2px solid #e0e7ff;
+  border-radius: 8px;
+  margin-bottom: 0;
+
+  ion-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  ion-input,
+  ion-textarea {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 0.875rem;
+    --padding-bottom: 0.875rem;
+    --color: #0f172a;
+    --placeholder-color: #94a3b8;
+    --placeholder-opacity: 1;
+    font-size: 1rem;
+  }
+
+  ion-textarea {
+    min-height: 100px;
+  }
+
+  &.ion-focused {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  &.ion-invalid.ion-touched {
+    border-color: #ef4444;
+  }
+}
+
+/* Form footer with button */
+.form-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.submit-btn {
+  --background: #3b82f6;
+  --background-hover: #2563eb;
+  --background-activated: #2563eb;
+  --border-radius: 8px;
+  --padding-top: 1rem;
+  --padding-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 48px;
+
+  &.button-disabled {
+    --background: #cbd5e1;
+    --color: #94a3b8;
+  }
+}
+
+.helper-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Success message after form submission */
+.success-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #ecfdf5;
+  border: 2px solid #10b981;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+
+  ion-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* Error message when submission fails */
+.error-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #fef2f2;
+  border: 2px solid #ef4444;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+
+  ion-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablet view */
+@media (max-width: 1023px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .info-card {
+    position: static;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .contact-section {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .section-shell {
+    padding: 0 1.25rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-description {
+    font-size: 0.9375rem;
+  }
+
+  .contact-layout {
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+
+  .form-card {
+    padding: 1.5rem;
+
+    form {
+      gap: 1.25rem;
+    }
+  }
+}

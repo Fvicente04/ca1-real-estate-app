@@ -1,0 +1,223 @@
+<ion-header>
+  <ion-toolbar class="detail-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Property Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="detail-content">
+  
+  <!-- Loading state -->
+  <div *ngIf="loading" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading property details...</p>
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="!loading && !property" class="error-container">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <h2>Property not found</h2>
+    <p>The property you're looking for doesn't exist or has been removed.</p>
+    <ion-button (click)="goBack()" class="back-btn">
+      Back to listings
+    </ion-button>
+  </div>
+
+  <!-- Main content (shown when property loaded) -->
+  <ng-container *ngIf="!loading && property">
+    
+    <!-- Hero section with image and key info -->
+    <section class="hero-section">
+      
+      <!-- Main property image -->
+      <div class="hero-image">
+        <img
+          [src]="property.Images && property.Images.length ? property.Images[0] : 'assets/placeholder-property.jpg'"
+          [alt]="property.Title"
+          class="hero-img" />
+      </div>
+
+      <!-- Info overlay -->
+      <div class="hero-info">
+        <h1 class="property-title">{{ property.Title }}</h1>
+
+        <!-- Location -->
+        <div class="property-location">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>{{ property.Location }}</span>
+        </div>
+
+        <!-- Price and quick specs -->
+        <div class="hero-bottom-row">
+          <div class="hero-price">€{{ property.Price | number : '1.0-0' }}</div>
+          <div class="hero-specs">
+            {{ property.Bedrooms }} bed ·
+            {{ property.Bathrooms }} bath ·
+            {{ property.Area }} m²
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+      
+      <!-- Detail card with specs and description -->
+      <ion-card class="detail-card">
+        
+        <ion-card-header>
+          <ion-card-title>Overview</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          
+          <!-- Specifications grid -->
+          <div class="specs-grid">
+            
+            <!-- Bedrooms -->
+            <div class="spec-item">
+              <ion-icon name="bed-outline"></ion-icon>
+              <span class="spec-label">Bedrooms</span>
+              <span class="spec-value">{{ property.Bedrooms }}</span>
+            </div>
+
+            <!-- Bathrooms -->
+            <div class="spec-item">
+              <ion-icon name="water-outline"></ion-icon>
+              <span class="spec-label">Bathrooms</span>
+              <span class="spec-value">{{ property.Bathrooms }}</span>
+            </div>
+
+            <!-- Area -->
+            <div class="spec-item">
+              <ion-icon name="resize-outline"></ion-icon>
+              <span class="spec-label">Area</span>
+              <span class="spec-value">{{ property.Area }} m²</span>
+            </div>
+            
+          </div>
+
+          <!-- Description -->
+          <div class="description-section">
+            <h3>Description</h3>
+            <p class="description-text">
+              {{ property.Description }}
+            </p>
+          </div>
+
+          <!-- Book viewing button -->
+          <ion-button
+            expand="block"
+            class="book-btn"
+            (click)="bookViewing()">
+            Book a viewing
+          </ion-button>
+          
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Google Maps section -->
+      <section class="map-section">
+        
+        <!-- Section header -->
+        <div class="map-header">
+          <h2>Location</h2>
+          <p>{{ property.Location }}</p>
+        </div>
+
+        <!-- Map container -->
+        <div class="map-wrapper">
+          <div #mapElement class="map-canvas"></div>
+          
+          <!-- Loading indicator -->
+          <div class="map-loading" *ngIf="loadingMap">
+            <ion-spinner name="crescent" color="primary"></ion-spinner>
+            <p>Loading map...</p>
+          </div>
+
+          <!-- Error message -->
+          <div class="map-error" *ngIf="mapError">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            <p>{{ mapError }}</p>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- Related properties section -->
+      <section class="related-section" *ngIf="relatedProperties.length">
+        
+        <!-- Section header -->
+        <div class="related-header">
+          <h2>You might also like</h2>
+          <p>Similar properties in our portfolio</p>
+        </div>
+
+        <!-- Related properties grid -->
+        <ion-grid class="related-grid">
+          <ion-row>
+            
+            <!-- Loop through properties (max 6) -->
+            <ion-col
+              size="12"
+              size-md="6"
+              size-lg="4"
+              *ngFor="let p of relatedProperties | slice:0:6">
+              
+              <!-- Related property card -->
+              <ion-card
+                class="related-card"
+                button="true"
+                (click)="openProperty(p.id)">
+
+                <!-- Property image -->
+                <div class="related-image">
+                  <img
+                    [src]="p.Images && p.Images.length ? p.Images[0] : 'assets/placeholder-property.jpg'"
+                    [alt]="p.Title" />
+                </div>
+
+                <!-- Property info -->
+                <ion-card-content>
+                  
+                  <!-- Price -->
+                  <div class="related-price">
+                    €{{ p.Price | number : '1.0-0' }}
+                  </div>
+
+                  <!-- Title -->
+                  <h4 class="related-title">
+                    {{ p.Title }}
+                  </h4>
+
+                  <!-- Location -->
+                  <p class="related-location">
+                    📍 {{ p.Location }}
+                  </p>
+
+                  <!-- Specs -->
+                  <div class="related-specs">
+                    {{ p.Bedrooms }} bed ·
+                    {{ p.Bathrooms }} bath ·
+                    {{ p.Area }} m²
+                  </div>
+                  
+                </ion-card-content>
+              </ion-card>
+              
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </section>
+      
+    </div>
+    
+  </ng-container>
+  
+</ion-content>

@@ -1,0 +1,187 @@
+<ion-content class="about-content" [fullscreen]="true">
+  
+  <!-- Hero section with intro text and image -->
+  <section class="hero-section">
+    <div class="hero-shell">
+      
+      <!-- Text content -->
+      <div class="hero-text">
+        <p class="hero-label">About us</p>
+        
+        <h1>Mission &amp; Values</h1>
+
+        <p class="hero-lead">
+          We are a Dublin-based real estate team focused on helping people find
+          high-quality and affordable homes across Ireland.
+        </p>
+
+        <p class="hero-body">
+          This app was created as part of a college assignment to demonstrate
+          property listings, detail views, and booking features using modern
+          web technologies like Ionic and Firebase.
+        </p>
+
+        <p class="hero-body">
+          Our goal is to make the process of renting or buying as simple as
+          possible – from discovering properties to viewing details to booking
+          a viewing. Everything is powered by Firebase and Ionic.
+        </p>
+      </div>
+
+      <!-- Image side -->
+      <div class="hero-image">
+        <img
+          src="https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg"
+          alt="Modern apartment buildings with green area"
+        />
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Features - what the app does -->
+   
+  <section class="features-section">
+    <div class="section-shell">
+      
+      <div class="features-card">
+        <h2>What this app does</h2>
+
+        <!-- List of features -->
+        <ul class="features-list">
+          <li>Lists available properties fetched from Firebase Firestore</li>
+          <li>Shows full details and photos for each property</li>
+          <li>Allows users to register and log in using Firebase Auth</li>
+          <li>Lets users browse featured properties and see similar ones</li>
+          <li>Saves viewing requests directly to Firestore</li>
+          <li>Fully responsive design for mobile, tablet, and desktop</li>
+        </ul>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Our values section -->
+  <section class="values-section">
+    <div class="section-shell">
+      
+      <div class="values-header">
+        <h2>Our values</h2>
+        <p>
+          Even though this is an academic project, the idea is to reflect how
+          a real estate agency would present itself to clients.
+        </p>
+      </div>
+
+      <!-- Values grid - 4 cards -->
+      <div class="values-grid">
+        
+        <!-- Transparency card -->
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <h3>Transparency</h3>
+          <p>
+            Clear information about each property, including prices, 
+            specifications, and location details.
+          </p>
+        </div>
+
+        <!-- Reliability card -->
+        <div class="value-card">
+          <div class="value-icon">✓</div>
+          <h3>Reliability</h3>
+          <p>
+            Data stored securely in Firebase and loaded consistently
+            across all devices.
+          </p>
+        </div>
+
+        <!-- Experience card -->
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <h3>Experience</h3>
+          <p>
+            Interface inspired by real property portals, adapted for
+            modern mobile-first design.
+          </p>
+        </div>
+
+        <!-- Innovation card -->
+        <div class="value-card">
+          <div class="value-icon">🚀</div>
+          <h3>Innovation</h3>
+          <p>
+            Built with Ionic, Angular, and Firebase to demonstrate
+            cutting-edge web technologies.
+          </p>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Team section -->
+
+  <section class="team-section">
+    <div class="section-shell">
+      
+      <div class="team-header">
+        <h2>Leadership team</h2>
+        <p>The people behind this project</p>
+      </div>
+
+      <!-- Team cards -->
+      <div class="team-grid">
+        
+        <!-- Product Manager -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <span>PM</span>
+          </div>
+          <div class="team-info">
+            <h3>Product Manager</h3>
+            <p class="team-role">Product &amp; UX</p>
+            <p class="team-bio">
+              Coordinates the overall project idea, user flows, and visual
+              language to keep the app clean and easy to use.
+            </p>
+          </div>
+        </div>
+
+        <!-- Frontend Dev -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <span>FE</span>
+          </div>
+          <div class="team-info">
+            <h3>Frontend Developer</h3>
+            <p class="team-role">Ionic &amp; Angular</p>
+            <p class="team-bio">
+              Responsible for building the interface, navigation, and
+              connecting the components to Firebase services.
+            </p>
+          </div>
+        </div>
+
+        <!-- Data Engineer -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <span>DB</span>
+          </div>
+          <div class="team-info">
+            <h3>Data Engineer</h3>
+            <p class="team-role">Firestore &amp; Auth</p>
+            <p class="team-bio">
+              Designs the data model for properties and viewings, and
+              configures Firebase Auth and Firestore rules.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+  
+</ion-content>

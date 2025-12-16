@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar class="register-toolbar">
+    <ion-title>Real Estate App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="register-content">
+  
+  <!-- Centers registration card on page -->
+  <div class="register-wrapper">
+    
+    <div class="register-card">
+      
+      <!-- Header with title -->
+      <div class="card-header">
+        <p class="card-subtitle">Create account</p>
+        <h1 class="card-title">Welcome</h1>
+        <p class="card-description">
+          Sign up to start browsing properties and booking viewings.
+        </p>
+      </div>
+
+      <div class="card-body">
+        
+        <form (ngSubmit)="onRegister()" #registerForm="ngForm" novalidate>
+          
+          <!-- Email field -->
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Email address *</ion-label>
+            <ion-input
+              type="email"
+              name="email"
+              placeholder="your.email@example.com"
+              required
+              [(ngModel)]="email"
+            ></ion-input>
+          </ion-item>
+
+          <!-- Password field with show/hide toggle -->
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Password *</ion-label>
+            <ion-input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              placeholder="At least 6 characters"
+              required
+              minlength="6"
+              [(ngModel)]="password"
+            ></ion-input>
+            <ion-button
+              slot="end"
+              fill="clear"
+              class="toggle-password-btn"
+              (click)="togglePassword()"
+              aria-label="Toggle password visibility"
+            >
+              <ion-icon
+                slot="icon-only"
+                [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+              ></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          <!-- Confirm password field -->
+          <ion-item lines="none" class="form-item">
+            <ion-label position="stacked">Confirm password *</ion-label>
+            <ion-input
+              [type]="showPassword ? 'text' : 'password'"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              required
+              [(ngModel)]="confirmPassword"
+            ></ion-input>
+          </ion-item>
+
+          <!-- Error message -->
+          <ion-note *ngIf="errorMessage" color="danger" class="error-note">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            {{ errorMessage }}
+          </ion-note>
+
+          <!-- Submit button -->
+          <ion-button
+            expand="block"
+            type="submit"
+            [disabled]="loading"
+            class="submit-btn"
+          >
+            {{ loading ? 'Creating account...' : 'Create account' }}
+          </ion-button>
+
+          <!-- Link to login page -->
+          <div class="footer-link">
+            <p>
+              Already have an account?
+              <ion-button fill="clear" size="small" (click)="goToLogin()">
+                Sign in
+              </ion-button>
+            </p>
+          </div>
+          
+        </form>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</ion-content>

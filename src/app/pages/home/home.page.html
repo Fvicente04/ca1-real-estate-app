@@ -1,0 +1,274 @@
+
+
+<ion-content class="home-content" [fullscreen]="true">
+
+
+  <section class="hero">
+    <div class="hero-shell">
+      
+      <!-- Left side: Text content and CTAs -->
+      <div class="hero-text">
+        <!-- Small label above title -->
+        <p class="hero-kicker">Dublin · Real Estate</p>
+
+        <!-- Main headline -->
+        <h1 class="hero-title">
+          Find your next home<br />
+          in Dublin
+        </h1>
+
+        <!-- Subtitle description -->
+        <p class="hero-subtitle">
+          Browse curated apartments and houses across Dublin. 
+          View full details and book viewings – all in one place.
+        </p>
+
+        <!-- Call-to-action buttons -->
+        <div class="hero-actions">
+          <button
+            class="btn primary-btn"
+            routerLink="/properties"
+            type="button"
+          >
+            Browse properties
+          </button>
+
+          <button
+            class="btn secondary-btn"
+            routerLink="/contact"
+            type="button"
+          >
+            Book a viewing
+          </button>
+        </div>
+
+        <!-- Statistics row -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ properties.length }}</span>
+            <span class="stat-label">Active listings</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3–5</span>
+            <span class="stat-label">Days to viewing</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Online access</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Featured property card -->
+      <div class="hero-featured" *ngIf="!loading && properties.length">
+        <div class="featured-card" (click)="openProperty(properties[0].id)">
+          
+          <!-- Property image with badge -->
+          <div class="featured-image">
+            <img
+              [src]="properties[0].Images && properties[0].Images[0] ? properties[0].Images[0] : ''"
+              [alt]="properties[0].Title"
+            />
+            <div class="featured-badge">Featured</div>
+          </div>
+
+          <!-- Property details -->
+          <div class="featured-body">
+            <h3 class="featured-title">
+              {{ properties[0].Title }}
+            </h3>
+            
+            <p class="featured-location">
+              📍 {{ properties[0].Location }}
+            </p>
+
+            <div class="featured-specs">
+              <span>{{ properties[0].Bedrooms }} bed</span>
+              <span class="dot">·</span>
+              <span>{{ properties[0].Bathrooms }} bath</span>
+              <span class="dot">·</span>
+              <span>{{ properties[0].Area }} m²</span>
+            </div>
+
+            <div class="featured-price">
+              €{{ properties[0].Price | number : '1.0-0' }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GET STARTED SECTION - Four action cards showing different ways to interact with the app -->
+  <section class="section section-actions">
+    <div class="section-shell">
+      
+      <!-- Section header -->
+      <div class="section-header">
+        <h2>How would you like to get started?</h2>
+        <p>
+          Choose one of the options below to begin your property search in Dublin.
+        </p>
+      </div>
+
+      <!-- Grid of action cards (4 columns on desktop, 2 on tablet, 1 on mobile) -->
+      <div class="actions-grid">
+        
+        <!-- Card 1: Find property -->
+        <div class="action-card">
+          <div class="action-icon">🔍</div>
+          <h3>Find a property</h3>
+          <p>Browse all available listings by area, price, and size.</p>
+          <button
+            class="btn card-btn"
+            routerLink="/properties"
+            type="button"
+          >
+            View listings
+          </button>
+        </div>
+
+        <!-- Card 2: Book viewing -->
+        <div class="action-card">
+          <div class="action-icon">📅</div>
+          <h3>Book a viewing</h3>
+          <p>Pick a date and time and we'll confirm your visit by email.</p>
+          <button
+            class="btn card-btn"
+            routerLink="/contact"
+            type="button"
+          >
+            Book now
+          </button>
+        </div>
+
+        <!-- Card 3: Contact team -->
+        <div class="action-card">
+          <div class="action-icon">💬</div>
+          <h3>Talk to our team</h3>
+          <p>Need help deciding? Get in touch and we'll guide you.</p>
+          <button
+            class="btn card-btn"
+            routerLink="/contact"
+            type="button"
+          >
+            Contact us
+          </button>
+        </div>
+
+        <!-- Card 4: Saved properties -->
+        <div class="action-card">
+          <div class="action-icon">⭐</div>
+          <h3>Saved favourites</h3>
+          <p>Shortlist properties you like and compare them later.</p>
+          <button
+            class="btn card-btn"
+            routerLink="/properties"
+            type="button"
+          >
+            Explore
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+       TRENDING PROPERTIES SECTION
+       Displays first 3 properties from database in card format-->
+  <section class="section section-properties">
+    <div class="section-shell">
+      
+      <!-- Section header with CTA button -->
+      <div class="section-header split-header">
+        <div>
+          <h2>Trending properties</h2>
+          <p>Popular listings from our Dublin portfolio.</p>
+        </div>
+        <button
+          class="btn view-all-btn"
+          routerLink="/properties"
+          type="button"
+        >
+          View all
+        </button>
+      </div>
+
+      <!-- Loading spinner (shown while fetching data) -->
+      <div *ngIf="loading" class="loading-wrapper">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+      <!-- Property cards grid (responsive: 1 column mobile, 2 tablet, 3 desktop) -->
+      <ion-grid class="properties-grid" *ngIf="!loading && properties.length">
+        <ion-row>
+          
+          <!-- Loop through first 3 properties -->
+          <ion-col
+            size="12"
+            size-md="6"
+            size-lg="4"
+            *ngFor="let property of properties | slice:0:3"
+          >
+            
+            <!-- Individual property card (clickable) -->
+            <ion-card
+              class="property-card"
+              button="true"
+              (click)="openProperty(property.id)"
+            >
+              
+              <!-- Property image with optional featured badge -->
+              <div class="card-image">
+                <img
+                  [src]="property.Images && property.Images[0] ? property.Images[0] : ''"
+                  [alt]="property.Title"
+                />
+                <div class="card-badge" *ngIf="property.Featured">
+                  Featured
+                </div>
+              </div>
+
+              <!-- Property information -->
+              <ion-card-content>
+                
+                <!-- Price tag -->
+                <div class="card-price">
+                  €{{ property.Price | number : '1.0-0' }}
+                </div>
+
+                <!-- Property title -->
+                <h3 class="card-title">
+                  {{ property.Title }}
+                </h3>
+
+                <!-- Location with icon -->
+                <p class="card-location">
+                  📍 {{ property.Location }}
+                </p>
+
+                <!-- Property specifications (beds, baths, area) -->
+                <p class="card-specs">
+                  {{ property.Bedrooms }} bed ·
+                  {{ property.Bathrooms }} bath ·
+                  {{ property.Area }} m²
+                </p>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Empty state message (shown when no properties available) -->
+      <p class="empty-message" *ngIf="!loading && !properties.length">
+        No properties available at the moment. Please check back soon.
+      </p>
+
+    </div>
+  </section>
+
+</ion-content>

@@ -1,0 +1,198 @@
+<ion-header>
+  <ion-toolbar class="property-toolbar">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/properties">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Create Property</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="property-content">
+  
+  <!-- Main wrapper -->
+  <div class="property-wrapper">
+    
+    <!-- Property card -->
+    <div class="property-card">
+      
+      <!-- Card header -->
+      <div class="card-header">
+        <p class="card-subtitle">New Listing</p>
+        <h1 class="card-title">Add Property</h1>
+        <p class="card-description">
+          Fill in the details below to create a new property listing. All fields marked with * are required.
+        </p>
+      </div>
+
+      <!-- Card body with form -->
+      <div class="card-body">
+        
+        <form (ngSubmit)="submitForm()" #propertyForm="ngForm" novalidate>
+          
+          <!-- Title field -->
+          <div class="form-field">
+            <label for="title">Property Title *</label>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              placeholder="e.g. Modern Apartment in Dublin City"
+              required
+              [(ngModel)]="property.Title"
+            />
+          </div>
+
+          <!-- Location field -->
+          <div class="form-field">
+            <label for="location">Location *</label>
+            <input
+              id="location"
+              type="text"
+              name="location"
+              placeholder="e.g. Dublin 2, City Centre"
+              required
+              [(ngModel)]="property.Location"
+            />
+          </div>
+
+          <!-- Price field -->
+          <div class="form-field">
+            <label for="price">Price (€) *</label>
+            <input
+              id="price"
+              type="number"
+              name="price"
+              placeholder="e.g. 450000"
+              required
+              min="0"
+              [(ngModel)]="property.Price"
+            />
+          </div>
+
+          <!-- Two column layout for beds and baths -->
+          <div class="form-row">
+            
+            <!-- Bedrooms field -->
+            <div class="form-field">
+              <label for="bedrooms">Bedrooms *</label>
+              <input
+                id="bedrooms"
+                type="number"
+                name="bedrooms"
+                placeholder="e.g. 2"
+                required
+                min="0"
+                [(ngModel)]="property.Bedrooms"
+              />
+            </div>
+
+            <!-- Bathrooms field -->
+            <div class="form-field">
+              <label for="bathrooms">Bathrooms *</label>
+              <input
+                id="bathrooms"
+                type="number"
+                name="bathrooms"
+                placeholder="e.g. 2"
+                required
+                min="0"
+                [(ngModel)]="property.Bathrooms"
+              />
+            </div>
+            
+          </div>
+
+          <!-- Area field -->
+          <div class="form-field">
+            <label for="area">Area (m²) *</label>
+            <input
+              id="area"
+              type="number"
+              name="area"
+              placeholder="e.g. 85"
+              required
+              min="0"
+              [(ngModel)]="property.Area"
+            />
+          </div>
+
+          <!-- Description field -->
+          <div class="form-field">
+            <label for="description">Description *</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="5"
+              placeholder="Describe the property features, location benefits, and any special characteristics..."
+              required
+              [(ngModel)]="property.Description"
+            ></textarea>
+          </div>
+
+          <!-- Image URLs field -->
+          <div class="form-field">
+            <label for="images">Image URLs</label>
+            <input
+              id="images"
+              type="text"
+              name="images"
+              placeholder="Paste image URLs separated by commas"
+              [(ngModel)]="imageUrls"
+            />
+            <p class="field-hint">
+              Example: https://images.unsplash.com/photo1.jpg, https://images.unsplash.com/photo2.jpg
+            </p>
+          </div>
+
+          <!-- Featured checkbox -->
+          <div class="form-field-checkbox">
+            <input
+              id="featured"
+              type="checkbox"
+              name="featured"
+              [(ngModel)]="property.Featured"
+            />
+            <label for="featured">Mark as Featured Property</label>
+          </div>
+
+          <!-- Error message -->
+          <div class="error-message" *ngIf="errorMessage">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            <p>{{ errorMessage }}</p>
+          </div>
+
+          <!-- Success message -->
+          <div class="success-message" *ngIf="successMessage">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            <p>{{ successMessage }}</p>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="submitting || propertyForm.invalid"
+          >
+            {{ submitting ? 'Creating Property...' : 'Create Property' }}
+          </button>
+
+          <!-- Cancel button -->
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="goBack()"
+            [disabled]="submitting"
+          >
+            Cancel
+          </button>
+          
+        </form>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</ion-content>

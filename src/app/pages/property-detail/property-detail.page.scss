@@ -1,0 +1,508 @@
+/* Header Toolbar */
+.detail-toolbar {
+  --background: #ffffff;
+  --color: #0f172a;
+  border-bottom: 1px solid #e0e7ff;
+
+  ion-title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+  }
+
+  ion-button {
+    --color: #3b82f6;
+  }
+}
+
+/* Page Background */
+.detail-content {
+  --background: #f8fafc;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e7ff;
+}
+
+.hero-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #e0e7ff;
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.hero-info {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 2rem 1.5rem 1.5rem;
+  border-top: 1px solid #e0e7ff;
+}
+
+.property-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.property-location {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  color: #64748b;
+
+  ion-icon {
+    font-size: 1.25rem;
+    color: #3b82f6;
+  }
+}
+
+.hero-bottom-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.hero-specs {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* Detail Card */
+.detail-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid #e0e7ff;
+  margin: 0 0 2.5rem;
+  box-shadow: none;
+
+  ion-card-header {
+    padding: 1.5rem 1.5rem 0.5rem;
+    border-bottom: 1px solid #f1f5f9;
+
+    ion-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+    }
+  }
+
+  ion-card-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Specifications Grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+
+  ion-icon {
+    font-size: 2rem;
+    color: #3b82f6;
+  }
+
+  .spec-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .spec-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+}
+
+/* Description Section */
+.description-section {
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .description-text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Book Viewing Button */
+.book-btn {
+  --background: #3b82f6;
+  --background-hover: #2563eb;
+  --background-activated: #2563eb;
+  --border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  height: 48px;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  min-height: 60vh;
+
+  ion-spinner {
+    transform: scale(1.4);
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: #64748b;
+  }
+}
+
+/* Error State */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  min-height: 60vh;
+
+  ion-icon {
+    font-size: 5rem;
+    color: #3b82f6;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  p {
+    margin: 0 0 2rem;
+    font-size: 1rem;
+    color: #64748b;
+    max-width: 400px;
+  }
+
+  .back-btn {
+    --background: #3b82f6;
+    --background-hover: #2563eb;
+    --border-radius: 8px;
+    font-weight: 600;
+  }
+}
+
+/* Related Properties Section */
+.related-section {
+  margin-top: 2rem;
+}
+
+.related-header {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    margin: 0 0 0.375rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: #64748b;
+  }
+}
+
+.related-grid {
+  padding: 0;
+
+  ion-row {
+    row-gap: 1.5rem;
+  }
+}
+
+.related-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid #e0e7ff;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.12);
+  }
+
+  ion-card-content {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+}
+
+.related-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #e0e7ff;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.related-price {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid #bfdbfe;
+}
+
+.related-title {
+  margin: 0 0 0.375rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.related-location {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.related-specs {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #475569;
+}
+
+/* Map Section */
+.map-section {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #e0e7ff;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+}
+
+.map-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e0e7ff;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+  background: #eff6ff;
+}
+
+.map-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  z-index: 10;
+
+  ion-spinner {
+    --color: #3b82f6;
+    width: 36px;
+    height: 36px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+  }
+}
+
+.map-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fef2f2;
+  border: 2px solid #ef4444;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+  z-index: 10;
+  max-width: 90%;
+
+  ion-icon {
+    font-size: 1.5rem;
+    color: #ef4444;
+    flex-shrink: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #991b1b;
+  }
+}
+
+/* Responsive - Tablet & Desktop */
+@media (min-width: 768px) {
+  .hero-image {
+    height: 400px;
+  }
+
+  .hero-info {
+    padding: 2.5rem 2rem 2rem;
+  }
+
+  .property-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-bottom-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .content-wrapper {
+    padding: 2rem 1.5rem;
+  }
+
+  .detail-card {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+  }
+
+  .specs-grid {
+    gap: 2rem;
+    padding: 1.5rem 0;
+  }
+
+  .related-image {
+    height: 200px;
+  }
+}
+
+/* Responsive - Large Desktop */
+@media (min-width: 1024px) {
+  .hero-image {
+    height: 480px;
+  }
+
+  .content-wrapper {
+    padding: 2.5rem 2rem;
+  }
+}
